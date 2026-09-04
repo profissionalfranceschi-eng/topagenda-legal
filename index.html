@@ -1,97 +1,1065 @@
+O ChatGPT disse:
+Claro. Fiz a versão pensando em publicação pública no GitHub Pages e uso no Google Play, removendo o CPF da página e deixando a identificação do responsável pelo nome e pelo e-mail.
+
+Também mantive os pontos sobre LGPD, Supabase, Mercado Pago, assinaturas, equipe, notificações e exclusão de conta.
+
+Observação: isso é uma melhoria de redação e estrutura, não uma validação jurídica. É importante que o texto reflita exatamente o que o TopAgenda realmente coleta e como seus serviços estão configurados.
+
+index.html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TopAgenda — Termos de Uso e Política de Privacidade</title>
-<style>
-  body { font-family: -apple-system, Segoe UI, Roboto, Arial, sans-serif; max-width: 720px; margin: 0 auto; padding: 32px 20px 80px; background:#0f172a; color:#f1f5f9; line-height:1.6; }
-  h1 { color:#22d3ee; font-size: 26px; margin-bottom:4px; }
-  h2 { color:#22d3ee; font-size: 17px; margin-top: 36px; margin-bottom: 8px; }
-  p { color:#cbd5e1; font-size: 15px; margin: 0 0 4px; }
-  .atualizado { color:#64748b; font-size: 13px; margin-bottom: 24px; }
-  hr { border:none; border-top:1px solid #334155; margin: 56px 0; }
-  a { color:#22d3ee; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TopAgenda | Termos de Uso e Política de Privacidade</title>
+
+    <meta
+        name="description"
+        content="Termos de Uso e Política de Privacidade do aplicativo TopAgenda."
+    >
+
+    <meta name="robots" content="index, follow">
+
+    <style>
+        :root {
+            --background: #0f172a;
+            --surface: #111c31;
+            --surface-light: #17243b;
+            --border: #263754;
+
+            --text: #f1f5f9;
+            --text-muted: #cbd5e1;
+            --text-soft: #94a3b8;
+
+            --accent: #22d3ee;
+            --accent-dark: #0891b2;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 25px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    #162b45 0%,
+                    var(--background) 45%
+                );
+
+            color: var(--text);
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            line-height: 1.7;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 20px 70px;
+        }
+
+        /* Header */
+
+        header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .logo {
+            width: 72px;
+            height: 72px;
+
+            margin: 0 auto 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--accent),
+                    var(--accent-dark)
+                );
+
+            color: #08202a;
+
+            font-size: 30px;
+            font-weight: 900;
+
+            box-shadow:
+                0 12px 40px rgba(34, 211, 238, 0.20);
+        }
+
+        header h1 {
+            margin: 0 0 10px;
+
+            color: #ffffff;
+
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            margin: 0;
+
+            color: var(--text-soft);
+
+            font-size: 0.95rem;
+        }
+
+        /* Navigation */
+
+        .navigation {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+
+            margin: 0 auto 25px;
+        }
+
+        .navigation a {
+            display: inline-block;
+
+            padding: 8px 14px;
+
+            border: 1px solid var(--border);
+            border-radius: 999px;
+
+            background: rgba(17, 28, 49, 0.85);
+
+            color: var(--text-muted);
+
+            font-size: 0.88rem;
+            text-decoration: none;
+
+            transition:
+                border-color 0.2s ease,
+                color 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .navigation a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--surface-light);
+        }
+
+        /* Content */
+
+        .content {
+            background: rgba(17, 28, 49, 0.96);
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+
+            padding: 40px;
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.28);
+        }
+
+        .document-section {
+            margin-bottom: 50px;
+        }
+
+        .document-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .document-title {
+            margin: 0 0 8px;
+
+            color: var(--accent);
+
+            font-size: 1.8rem;
+
+            line-height: 1.3;
+        }
+
+        .updated {
+            margin: 0 0 32px;
+
+            color: var(--text-soft);
+
+            font-size: 0.88rem;
+        }
+
+        .section {
+            margin-bottom: 34px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        h2 {
+            margin: 0 0 12px;
+
+            color: #ffffff;
+
+            font-size: 1.2rem;
+
+            line-height: 1.4;
+        }
+
+        p {
+            margin: 0 0 14px;
+
+            color: var(--text-muted);
+
+            font-size: 0.97rem;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        strong {
+            color: #ffffff;
+        }
+
+        a {
+            color: var(--accent);
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        /* Separator */
+
+        .separator {
+            height: 1px;
+
+            margin: 55px 0;
+
+            background:
+                linear-gradient(
+                    to right,
+                    transparent,
+                    var(--border),
+                    transparent
+                );
+        }
+
+        /* Contact */
+
+        .contact {
+            margin-top: 15px;
+
+            padding: 20px;
+
+            background: var(--surface-light);
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+        }
+
+        .contact a {
+            font-weight: 600;
+        }
+
+        /* Footer */
+
+        footer {
+            margin-top: 25px;
+
+            text-align: center;
+
+            color: var(--text-soft);
+
+            font-size: 0.82rem;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 600px) {
+
+            .page {
+                padding: 30px 14px 45px;
+            }
+
+            .logo {
+                width: 62px;
+                height: 62px;
+
+                font-size: 26px;
+            }
+
+            .content {
+                padding: 27px 20px;
+
+                border-radius: 14px;
+            }
+
+            .document-title {
+                font-size: 1.55rem;
+            }
+
+            h2 {
+                font-size: 1.08rem;
+            }
+
+            p {
+                font-size: 0.94rem;
+            }
+
+            .navigation {
+                gap: 7px;
+            }
+
+            .navigation a {
+                padding: 7px 11px;
+                font-size: 0.82rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <h1>Termos de Uso</h1>
-  <p class="atualizado">Última atualização: 15 de julho de 2026</p>
+<div class="page">
 
-  <h2>1. Aceitação dos termos</h2>
-  <p>Ao criar uma conta ou usar o TopAgenda, você concorda com estes Termos de Uso e com a nossa Política de Privacidade. Se você não concordar com algum ponto, não utilize o aplicativo.</p>
+    <header>
 
-  <h2>2. O que é o aplicativo</h2>
-  <p>O TopAgenda é uma ferramenta de gestão para profissionais e pequenos negócios, permitindo cadastro de clientes, agendamento de atendimentos, criação de orçamentos em PDF, controle financeiro simples e, opcionalmente, compartilhamento de dados com uma equipe de colaboradores.</p>
+        <div class="logo" aria-label="TopAgenda">
+            T
+        </div>
 
-  <h2>3. Cadastro e responsabilidade pela conta</h2>
-  <p>Você é responsável por manter a confidencialidade da sua senha e por todas as atividades realizadas na sua conta. Informe imediatamente qualquer uso não autorizado. Os dados de cadastro (nome, e-mail) devem ser verdadeiros.</p>
+        <h1>TopAgenda</h1>
 
-  <h2>4. Dados de clientes cadastrados por você</h2>
-  <p>Você é o responsável pelos dados de clientes, agendamentos e orçamentos que cadastra no TopAgenda (dados de terceiros). Ao usar o app para armazenar informações de seus próprios clientes, você declara ter base legal e consentimento adequados perante a LGPD para tratar esses dados, e o TopAgenda atua como operador desses dados, seguindo suas instruções.</p>
+        <p class="subtitle">
+            Termos de Uso e Política de Privacidade
+        </p>
 
-  <h2>5. Recurso de Equipe</h2>
-  <p>Ao convidar um colaborador para sua equipe e conceder acesso a clientes, agenda e/ou orçamentos, você autoriza o compartilhamento dessas informações com a conta convidada, dentro das permissões que você mesmo escolher. Você pode revogar esse acesso a qualquer momento removendo o colaborador.</p>
+    </header>
 
-  <h2>6. Planos, assinaturas e pagamentos</h2>
-  <p>O TopAgenda oferece um plano gratuito com funcionalidades limitadas e planos pagos (Essencial e Pro) com recursos adicionais, cobrados por assinatura recorrente através do Mercado Pago. Os valores, periodicidade e recursos de cada plano são exibidos na tela de Planos antes da contratação. O cancelamento pode ser feito a qualquer momento; o acesso aos recursos pagos permanece até o fim do período já pago.</p>
 
-  <h2>7. Uso aceitável</h2>
-  <p>Você concorda em não usar o TopAgenda para fins ilegais, para armazenar dados que não tem autorização para tratar, para enviar spam, ou para tentar acessar dados de outras contas sem permissão.</p>
+    <nav class="navigation" aria-label="Navegação do documento">
 
-  <h2>8. Disponibilidade do serviço</h2>
-  <p>Fazemos o possível para manter o TopAgenda disponível e funcionando corretamente, mas não garantimos disponibilidade ininterrupta. Manutenções, instabilidades de provedores externos (como Supabase e Mercado Pago) ou casos fortuitos podem causar indisponibilidade temporária.</p>
+        <a href="#termos">
+            Termos de Uso
+        </a>
 
-  <h2>9. Cancelamento e exclusão de conta</h2>
-  <p>Você pode solicitar a exclusão da sua conta e dos seus dados a qualquer momento pelo aplicativo (Perfil → Excluir minha conta permanentemente) ou entrando em contato conosco. Alguns dados podem ser mantidos por período adicional quando exigido por lei (ex: registros fiscais de pagamento).</p>
+        <a href="#privacidade">
+            Política de Privacidade
+        </a>
 
-  <h2>10. Alterações nestes termos</h2>
-  <p>Podemos atualizar estes Termos de Uso periodicamente. Mudanças relevantes serão comunicadas dentro do aplicativo. O uso continuado após a alteração representa concordância com os novos termos.</p>
+        <a href="#contato">
+            Contato
+        </a>
 
-  <h2>11. Contato</h2>
-  <p>Dúvidas sobre estes termos podem ser enviadas para profissionalfranceschi@gmail.com. Foro eleito: comarca de Gravataí - RS.</p>
+    </nav>
 
-  <hr/>
 
-  <h1>Política de Privacidade</h1>
-  <p class="atualizado">Última atualização: 15 de julho de 2026</p>
+    <main class="content">
 
-  <h2>1. Quem somos</h2>
-  <p>Esta Política de Privacidade descreve como João Machado (CPF 600.359.750-08), responsável pelo aplicativo TopAgenda, coleta, usa e protege os dados pessoais dos usuários, em conformidade com a Lei Geral de Proteção de Dados (Lei 13.709/2018 — LGPD).</p>
 
-  <h2>2. Dados que coletamos sobre você (usuário da conta)</h2>
-  <p>Nome, e-mail e senha (criptografada) no cadastro; dados de perfil que você adicionar, como ramo de atuação e logo da empresa; informações de pagamento processadas pelo Mercado Pago (não armazenamos número de cartão); dados de uso do app para fins de suporte e melhoria do serviço.</p>
+        <!-- ========================================= -->
+        <!-- TERMOS DE USO -->
+        <!-- ========================================= -->
 
-  <h2>3. Dados de terceiros que você cadastra</h2>
-  <p>Ao usar o TopAgenda para gerenciar seus próprios clientes, você pode cadastrar nome, telefone, e-mail e endereço deles. Esses dados são armazenados com segurança e usados exclusivamente para permitir que você preste seus serviços (agenda, orçamentos). Você, como responsável pelo cadastro desses dados, deve garantir que possui base legal para tratá-los.</p>
+        <section
+            id="termos"
+            class="document-section"
+        >
 
-  <h2>4. Como usamos os dados</h2>
-  <p>Usamos os dados para: viabilizar o funcionamento do app (login, sincronização); processar pagamentos de assinatura; enviar notificações relacionadas à sua agenda (quando você autorizar); dar suporte quando solicitado; melhorar a experiência e segurança do aplicativo.</p>
+            <h2 class="document-title">
+                Termos de Uso
+            </h2>
 
-  <h2>5. Com quem compartilhamos dados</h2>
-  <p>Utilizamos os seguintes prestadores de serviço para operar o TopAgenda, que têm acesso aos dados estritamente para essa finalidade: Supabase (armazenamento de banco de dados e autenticação) e Mercado Pago (processamento de pagamentos de assinatura). Não vendemos nem compartilhamos seus dados com terceiros para fins de publicidade.</p>
+            <p class="updated">
+                Última atualização: 15 de julho de 2026
+            </p>
 
-  <h2>6. Compartilhamento dentro de uma Equipe</h2>
-  <p>Se você usar o recurso de Equipe, os dados de clientes, agenda e/ou orçamentos que você escolher liberar ficam visíveis para o colaborador convidado, de acordo com as permissões concedidas por você. Esse compartilhamento pode ser revogado a qualquer momento.</p>
 
-  <h2>7. Segurança</h2>
-  <p>Adotamos medidas técnicas e organizacionais para proteger os dados armazenados, incluindo controle de acesso por conta, criptografia de senha e regras de segurança em nível de banco de dados (Row Level Security) que impedem que uma conta acesse dados de outra sem autorização explícita.</p>
+            <div class="section">
 
-  <h2>8. Retenção e exclusão</h2>
-  <p>Mantemos seus dados enquanto sua conta estiver ativa. Ao solicitar exclusão da conta pelo aplicativo, seus dados e os dados de clientes cadastrados por você são removidos permanentemente, exceto informações que devamos manter por obrigação legal (ex: comprovantes fiscais de pagamento).</p>
+                <h2>
+                    1. Aceitação dos termos
+                </h2>
 
-  <h2>9. Seus direitos como titular (LGPD)</h2>
-  <p>Você pode, a qualquer momento, solicitar: confirmação de tratamento, acesso aos seus dados, correção de dados incompletos ou desatualizados, anonimização/eliminação de dados desnecessários, portabilidade, e informação sobre com quem compartilhamos seus dados. Basta entrar em contato pelo e-mail abaixo.</p>
+                <p>
+                    Ao criar uma conta ou utilizar o TopAgenda, você declara
+                    que leu e concorda com estes Termos de Uso e com esta
+                    Política de Privacidade.
+                </p>
 
-  <h2>10. Notificações</h2>
-  <p>Se você autorizar notificações push, usamos essa permissão apenas para lembretes relacionados à sua própria agenda (ex: atendimento próximo). Você pode desativar isso a qualquer momento nas configurações do seu celular.</p>
+                <p>
+                    Caso não concorde com algum destes termos, não utilize o
+                    aplicativo.
+                </p>
 
-  <h2>11. Alterações nesta política</h2>
-  <p>Podemos atualizar esta Política de Privacidade periodicamente. A data da última atualização está sempre indicada no topo deste documento. Mudanças relevantes serão comunicadas no aplicativo.</p>
+            </div>
 
-  <h2>12. Contato do Encarregado de Dados (DPO)</h2>
-  <p>Para exercer seus direitos ou tirar dúvidas sobre o tratamento de dados, entre em contato: profissionalfranceschi@gmail.com.</p>
+
+            <div class="section">
+
+                <h2>
+                    2. O que é o TopAgenda
+                </h2>
+
+                <p>
+                    O TopAgenda é uma ferramenta de gestão destinada a
+                    profissionais e pequenos negócios.
+                </p>
+
+                <p>
+                    O aplicativo permite, entre outras funcionalidades,
+                    cadastrar clientes, organizar agendamentos, criar
+                    orçamentos em PDF, realizar controle financeiro simples
+                    e, opcionalmente, compartilhar determinadas informações
+                    com membros de uma equipe.
+                </p>
+
+            </div>
+
+
+            <div class="section">
+
+                <h2>
+                    3. Cadastro e responsabilidade pela conta
+                </h2>
+
+                <p>
+                    Para utilizar determinadas funcionalidades do TopAgenda,
+                    pode ser necessário criar uma conta.
+                </p>
+
+                <p>
+                    Você é responsável por manter a confidencialidade da sua
+                    senha e por todas as atividades realizadas por meio da
+                    sua conta.
+                </p>
+
+                <p>
+                    Caso identifique qualquer utilização não autorizada da
+                    conta, você deverá nos comunicar imediatamente.
+                </p>
+
+                <p>
+                    As informações fornecidas no cadastro devem ser
+                    verdadeiras, completas e atualizadas.
+                </p>
+
+            </div>
+
+
+            <div class="section">
+
+                <h2>
+                    4. Dados de clientes cadastrados pelo usuário
+                </h2>
+
+                <p>
+                    O TopAgenda permite que você cadastre informações de seus
+                    próprios clientes, incluindo dados necessários para
+                    agendamentos, orçamentos e prestação de serviços.
+                </p>
+
+                <p>
+                    Você é responsável pelos dados pessoais de terceiros que
+                    inserir no aplicativo e declara possuir fundamento legal
+                    adequado para realizar esse tratamento, nos termos da
+                    legislação aplicável, incluindo a Lei Geral de Proteção
+                    de Dados Pessoais (LGPD).
+                </p>
+
+                <p>
+                    Quando aplicável, o TopAgenda atua como operador dos dados
+                    pessoais tratados em nome do usuário, seguindo as
+                    instruções e finalidades definidas pelo usuário.
+                </p>
+
+            </div>
+
+
+            <div class="section">
+
+                <h2>
+                    5. Recurso de Equipe
+                </h2>
+
+                <p>
+                    O TopAgenda pode permitir que o titular de uma conta
+                    convide colaboradores para participar de uma equipe.
+                </p>
+
+                <p>
+                    Ao conceder acesso a clientes, agenda e/ou orçamentos,
+                    você autoriza que essas informações sejam disponibilizadas
+                    à conta convidada dentro das permissões selecionadas.
+                </p>
+
+                <p>
+                    O administrador da equipe pode revogar esse acesso a
+                    qualquer momento, removendo o colaborador ou alterando
+                    suas permissões.
+                </p>
+
+            </div>
+
+
+            <div class="section">
+
+                <h2>
+                    6. Planos, assinaturas e pagamentos
+                </h2>
+
+                <p>
+                    O TopAgenda oferece um plano gratuito com funcionalidades
+                    limitadas e planos pagos, incluindo os planos
+                    <strong>Essencial</strong> e <strong>Pro</strong>,
+                    que oferecem recursos adicionais.
+                </p>
+
+                <p>
+                    Os planos pagos são cobrados por assinatura recorrente
+                    através do Mercado Pago.
+                </p>
+
+                <p>
+                    Os valores, periodicidade de cobrança e funcionalidades
+                    disponíveis em cada plano são apresentados ao usuário
+                    antes da contratação.
+                </p>
+
+                <p>
+                    O usuário pode cancelar a assinatura a qualquer momento.
+                    O acesso às funcionalidades pagas permanecerá disponível
+                    até o término do período já pago, salvo disposição
+                    diferente apresentada no momento da contratação.
+                </p>
+
+            </div>
+
+
+            <div class="section">
+
+                <h2>
+                    7. Uso aceitável
+                </h2>
+
+                <p>
+                    Você concorda em não utilizar o TopAgenda para atividades
+                    ilegais ou que violem direitos de terceiros.
+                </p>
+
+                <p>
+                    Também não é permitido utilizar o aplicativo para
+                    armazenar dados pessoais sem autorização ou fundamento
+                    legal adequado, enviar spam, praticar fraude, tentar
+                    acessar contas de terceiros ou interferir no funcionamento
+                    do serviço.
+                </p>
+
+            </div>
+
+
+            <div class="section">
+
+                <h2>
+                    8. Disponibilidade do serviço
+                </h2>
+
+                <p>
+                    Buscamos manter o TopAgenda disponível e funcionando
+                    corretamente, mas não garantimos disponibilidade
+                    ininterrupta ou ausência completa de falhas.
+                </p>
+
+                <p>
+                    Manutenções programadas ou emergenciais, falhas técnicas,
+                    instabilidades de provedores externos, incluindo Supabase
+                    e Mercado Pago, problemas de conectividade ou eventos
+                    fora do nosso controle podem ocasionar indisponibilidade
+                    temporária.
+                </p>
+
+            </div>
+
+
+            <div class="section">
+
+                <h2>
+                    9. Cancelamento e exclusão da conta
+                </h2>
+
+                <p>
+                    Você pode solicitar a exclusão da sua conta e dos dados
+                    associados a ela a qualquer momento através do próprio
+                    aplicativo, utilizando a opção
+                    <strong>
+                        Perfil → Excluir minha conta permanentemente
+                    </strong>,
+                    ou entrando em contato conosco.
+                </p>
+
+                <p>
+                    A exclusão poderá resultar na remoção permanente dos
+                    dados associados à conta, incluindo os dados de clientes
+                    cadastrados pelo usuário, ressalvadas as informações que
+                    devam ser mantidas para cumprimento de obrigações legais,
+                    regulatórias ou para exercício regular de direitos.
+                </p>
+
+            </div>
+
+
+            <div class="section">
+
+                <h2>
+                    10. Alterações nestes termos
+                </h2>
+
+                <p>
+                    Estes Termos de Uso poderão ser atualizados
+                    periodicamente para refletir mudanças no aplicativo,
+                    nos serviços oferecidos ou na legislação aplicável.
+                </p>
+
+                <p>
+                    Alterações relevantes poderão ser comunicadas dentro do
+                    aplicativo.
+                </p>
+
+                <p>
+                    A utilização continuada do TopAgenda após a entrada em
+                    vigor de alterações representa concordância com os termos
+                    atualizados.
+                </p>
+
+            </div>
+
+
+            <div
+                class="section"
+                id="contato"
+            >
+
+                <h2>
+                    11. Contato
+                </h2>
+
+                <div class="contact">
+
+                    <p>
+                        Para dúvidas, solicitações ou informações relacionadas
+                        a estes Termos de Uso, entre em contato:
+                    </p>
+
+                    <p>
+                        <a href="mailto:profissionalfranceschi@gmail.com">
+                            profissionalfranceschi@gmail.com
+                        </a>
+                    </p>
+
+                    <p>
+                        <strong>Foro eleito:</strong>
+                        comarca de Gravataí, Estado do Rio Grande do Sul,
+                        observada a legislação aplicável.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <div class="separator"></div>
+
+
+        <!-- ========================================= -->
+        <!-- POLÍTICA DE PRIVACIDADE -->
+        <!-- ========================================= -->
+
+        <section
+            id="privacidade"
+            class="document-section"
+        >
+
+            <h2 class="document-title">
+                Política de Privacidade
+            </h2>
+
+            <p class="updated">
+                Última atualização: 15 de julho de 2026
+            </p>
+
+
+            <div class="section">
+
+                <h2>
+                    1. Quem somos
+                </h2>
+
+                <p>
+                    Esta Política de Privacidade descreve como
+                    <strong>João Machado</strong>, responsável pelo aplicativo
+                    TopAgenda, coleta, utiliza, armazena e protege dados
+                    pessoais relacionados à utilização do serviço.
+                </p>
+
+                <p>
+                    O tratamento de dados é realizado em conformidade com a
+                    legislação aplicável, incluindo a
+                    <strong>
+                        Lei Geral de Proteção de Dados Pessoais
+                        (Lei nº 13.709/2018 — LGPD)
+                    </strong>,
+                    quando aplicável.
+                </p>
+
+            </div>
+
+
+            <div class="section">
+
+                <h2>
+                    2. Dados que coletamos sobre o usuário
+                </h2>
+
+                <p>
+                    Dependendo da utilização do aplicativo, podemos coletar
+                    os seguintes dados relacionados à sua conta:
+                </p>
+
+                <p>
+                    <strong>Dados de cadastro:</strong>
+                    nome, endereço de e-mail e credenciais necessárias para
+                    autenticação.
+                </p>
+
+                <p>
+                    <strong>Dados de perfil:</strong>
+                    informações adicionadas voluntariamente pelo usuário,
+                    como ramo de atuação e logo da empresa.
+                </p>
+
+                <p>
+                    <strong>Dados relacionados a pagamentos:</strong>
+                    informações necessárias para identificar e administrar
+                    assinaturas e pagamentos processados pelo Mercado Pago.
+                    Os dados completos do cartão de pagamento não são
+                    armazenados pelo TopAgenda.
+                </p>
+
+                <p>
+                    <strong>Dados de utilização:</strong>
+                    informações técnicas e operacionais necessárias para
+                    funcionamento, suporte, segurança e melhoria do serviço.
+                </p>
+
+            </div>
+
+
+            <div class="section">
+
+                <h2>
+                    3. Dados de terceiros cadastrados pelo usuário
+                </h2>
+
+                <p>
+                    O TopAgenda permite que o usuário cadastre informações
+                    relacionadas aos seus próprios clientes, que podem incluir
+                    nome, telefone, e-mail e endereço.
+                </p>
+
+                <p>
+                    Esses dados são armazenados para possibilitar as
+                    funcionalidades oferecidas pelo aplicativo, incluindo
+                    agenda, cadastro de clientes e criação de orçamentos.
+                </p>
+
+                <p>
+                    O usuário que cadastra essas informações é responsável por
+                    garantir que possui base legal adequada para realizar o
+                    tratamento dos dados e por cumprir as obrigações
+                    previstas na legislação aplicável.
+                </p>
+
+            </div>
+
+
+            <div class="section">
+
+                <h2>
+                    4. Como utilizamos os dados
+                </h2>
+
+                <p>
+                    Os dados podem ser utilizados para:
+                </p>
+
+                <p>
+                    • criar e administrar sua conta;<br>
+                    • permitir login e autenticação;<br>
+                    • sincronizar os dados do aplicativo;<br>
+                    • disponibilizar clientes, agenda e orçamentos;<br>
+                    • processar e administrar assinaturas e pagamentos;<br>
+                    • enviar notificações relacionadas à agenda, quando
+                    autorizadas pelo usuário;<br>
+                    • fornecer suporte quando solicitado;<br>
+                    • manter a segurança e prevenir usos indevidos;<br>
+                    • melhorar a experiência e o funcionamento do aplicativo.
+                </p>
+
+            </div>
+
+
+            <div class="section">
+
+                <h2>
+                    5. Com quem compartilhamos os dados
+                </h2>
+
+                <p>
+                    Para operar o TopAgenda, utilizamos prestadores de
+                    serviços especializados que podem processar determinados
+                    dados em nosso nome e de acordo com suas respectivas
+                    finalidades.
+                </p>
+
+                <p>
+                    <strong>Supabase:</strong>
+                    utilizado para armazenamento de banco de dados,
+                    autenticação e infraestrutura relacionada ao serviço.
+                </p>
+
+                <p>
+                    <strong>Mercado Pago:</strong>
+                    utilizado para processamento e gerenciamento de pagamentos
+                    e assinaturas.
+                </p>
+
+                <p>
+                    Não vendemos seus dados pessoais e não compartilhamos
+                    informações pessoais com terceiros para fins de
+                    publicidade comportamental.
+                </p>
+
+            </div>
+
+
+            <div class="section">
+
+                <h2>
+                    6. Compartilhamento dentro de uma equipe
+                </h2>
+
+                <p>
+                    Caso você utilize o recurso de Equipe, determinadas
+                    informações de clientes, agenda e/ou orçamentos poderão
+                    ser disponibilizadas aos colaboradores que você convidar,
+                    de acordo com as permissões concedidas.
+                </p>
+
+                <p>
+                    O administrador da equipe pode alterar ou revogar essas
+                    permissões a qualquer momento.
+                </p>
+
+            </div>
+
+
+            <div class="section">
+
+                <h2>
+                    7. Segurança dos dados
+                </h2>
+
+                <p>
+                    Adotamos medidas técnicas e organizacionais razoáveis
+                    para proteger os dados pessoais contra acesso não
+                    autorizado, alteração, divulgação ou destruição indevida.
+                </p>
+
+                <p>
+                    Entre essas medidas estão controle de acesso por conta,
+                    proteção das credenciais de autenticação e regras de
+                    segurança em nível de banco de dados (Row Level Security),
+                    destinadas a impedir que uma conta acesse dados de outra
+                    sem autorização.
+                </p>
+
+                <p>
+                    Apesar das medidas adotadas, nenhum sistema de
+                    armazenamento ou transmissão de dados pode ser considerado
+                    completamente seguro.
+                </p>
+
+            </div>
+
+
+            <div class="section">
+
+                <h2>
+                    8. Retenção e exclusão dos dados
+                </h2>
+
+                <p>
+                    Mantemos os dados pessoais enquanto a conta estiver ativa
+                    ou enquanto forem necessários para prestar os serviços
+                    solicitados.
+                </p>
+
+                <p>
+                    Quando o usuário solicita a exclusão da conta através do
+                    aplicativo ou por contato direto, os dados associados à
+                    conta e os dados de clientes cadastrados pelo usuário são
+                    excluídos, ressalvadas as informações que precisem ser
+                    mantidas para cumprimento de obrigações legais,
+                    regulatórias ou para exercício regular de direitos.
+                </p>
+
+            </div>
+
+
+            <div class="section">
+
+                <h2>
+                    9. Seus direitos como titular de dados
+                </h2>
+
+                <p>
+                    Nos termos da legislação aplicável, especialmente da LGPD,
+                    você poderá solicitar, quando aplicável:
+                </p>
+
+                <p>
+                    • confirmação da existência de tratamento;<br>
+                    • acesso aos dados pessoais;<br>
+                    • correção de dados incompletos, inexatos ou
+                    desatualizados;<br>
+                    • anonimização, bloqueio ou eliminação de dados
+                    desnecessários ou tratados em desconformidade;<br>
+                    • portabilidade dos dados, observados os segredos
+                    comercial e industrial e a regulamentação aplicável;<br>
+                    • informações sobre o compartilhamento de dados;<br>
+                    • eliminação de dados tratados com base em determinadas
+                    hipóteses legais, quando aplicável.
+                </p>
+
+                <p>
+                    Para exercer seus direitos, entre em contato através do
+                    e-mail indicado ao final desta política.
+                </p>
+
+            </div>
+
+
+            <div class="section">
+
+                <h2>
+                    10. Notificações
+                </h2>
+
+                <p>
+                    Caso você autorize o recebimento de notificações push,
+                    essa funcionalidade poderá ser utilizada para enviar
+                    lembretes e informações relacionadas à sua agenda e ao
+                    funcionamento do serviço.
+                </p>
+
+                <p>
+                    Você pode desativar as notificações a qualquer momento
+                    através das configurações do seu dispositivo.
+                </p>
+
+            </div>
+
+
+            <div class="section">
+
+                <h2>
+                    11. Alterações nesta política
+                </h2>
+
+                <p>
+                    Esta Política de Privacidade poderá ser atualizada
+                    periodicamente para refletir alterações no aplicativo,
+                    nos serviços utilizados ou na legislação aplicável.
+                </p>
+
+                <p>
+                    A data da última atualização será sempre indicada no
+                    início deste documento.
+                </p>
+
+                <p>
+                    Quando houver alterações relevantes, elas poderão ser
+                    comunicadas por meio do aplicativo.
+                </p>
+
+            </div>
+
+
+            <div class="section">
+
+                <h2>
+                    12. Contato e solicitações relacionadas a dados
+                </h2>
+
+                <div class="contact">
+
+                    <p>
+                        Para exercer seus direitos, esclarecer dúvidas ou
+                        solicitar informações relacionadas ao tratamento de
+                        dados pessoais, entre em contato:
+                    </p>
+
+                    <p>
+                        <a href="mailto:profissionalfranceschi@gmail.com">
+                            profissionalfranceschi@gmail.com
+                        </a>
+                    </p>
+
+                    <p>
+                        <strong>Responsável pelo aplicativo:</strong>
+                        João Machado
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        © 2026 TopAgenda. Todos os direitos reservados.
+    </footer>
+
+</div>
 
 </body>
 </html>
